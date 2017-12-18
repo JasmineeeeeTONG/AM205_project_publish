@@ -1,15 +1,13 @@
 ---
-title: The Case of the Italian Olives
+title: Home
 ---
 
-This is the home page
+## Contents
+{:.no_toc}
+*  
+{: toc}
 
-## Lets have fun
 
->here is a quote
+## Authors
+Rui Fang, Jasmine (Jiawen) Tong
 
-Here is *emph* and **bold**.
-
-Here is some inline math $\alpha = \frac{\beta}{\gamma}$ and, of-course, E rules:
-
-$$ G_{\mu\nu} + \Lambda g_{\mu\nu}  = 8 \pi T_{\mu\nu} . $$
