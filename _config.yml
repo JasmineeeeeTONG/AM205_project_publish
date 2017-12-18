@@ -1,0 +1,9 @@
+theme: jekyll-theme-primer
+title: Two-Dimensional Pattern Formation with Reaction Diffusion Equations 
+description: AM205 2017 Fall Project
+baseurl:
+markdown: kramdown
+kramdown:
+    math_engine: mathjax
+    input: GFM
+    syntax_highlighter: rouge
