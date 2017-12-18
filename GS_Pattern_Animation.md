@@ -4947,9 +4947,6 @@ ACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny44My4xMDA=
 </video>
 
 
-![png](GS_Pattern_Animation_files/GS_Pattern_Animation_4_1.png)
-
-
 ## Backward Euler Method
 
 
@@ -12552,8 +12549,6 @@ ZjU3LjgzLjEwMA==
   Your browser does not support the video tag.
 </video>
 
-
-![png](GS_Pattern_Animation_files/GS_Pattern_Animation_7_1.png)
 
 
 ## Crank Nicolson Method
@@ -20412,9 +20407,6 @@ LWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTcuODMuMTAw
 ">
   Your browser does not support the video tag.
 </video>
-
-
-![png](GS_Pattern_Animation_files/GS_Pattern_Animation_10_1.png)
 
 
 ## Alternating Direction Implicit Method
@@ -28421,6 +28413,4 @@ AAAAAC1pbHN0AAAAJal0b28AAAAdZGF0YQAAAAEAAAAATGF2ZjU3LjgzLjEwMA==
   Your browser does not support the video tag.
 </video>
 
-
-![png](GS_Pattern_Animation_files/GS_Pattern_Animation_13_1.png)
 

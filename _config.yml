@@ -1,6 +1,6 @@
-theme: jekyll-theme-primer
+theme: jekyll-theme-architect
 title: Home
-description: AM205 2017 Fall Project
+description: 2D Pattern Formation with Reaction Diffusion Equations --- AM205 2017 Fall Project
 baseurl:
 markdown: kramdown
 kramdown:

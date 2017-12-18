@@ -4600,9 +4600,6 @@ aWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny44My4xMDA=
 
 
 
-![png](GM_Pattern_Animation_files/GM_Pattern_Animation_4_1.png)
-
-
 ## Backward Euler Method
 
 
@@ -5947,13 +5944,7 @@ HWRhdGEAAAABAAAAAExhdmY1Ny44My4xMDA=
 </video>
 
 
-
-
-![png](GM_Pattern_Animation_files/GM_Pattern_Animation_7_1.png)
-
-
 ## Crank Nicolson Method
-
 
 
 <video width="1008" height="504" controls autoplay loop>
@@ -7313,9 +7304,6 @@ bHN0AAAAJal0b28AAAAdZGF0YQAAAAEAAAAATGF2ZjU3LjgzLjEwMA==
 ">
   Your browser does not support the video tag.
 </video>
-
-
-![png](GM_Pattern_Animation_files/GM_Pattern_Animation_10_1.png)
 
 
 ## Alternating Direction Implicit Method
@@ -9112,8 +9100,5 @@ aWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny44My4xMDA=
 ">
   Your browser does not support the video tag.
 </video>
-
-
-![png](GM_Pattern_Animation_files/GM_Pattern_Animation_13_1.png)
 
 
