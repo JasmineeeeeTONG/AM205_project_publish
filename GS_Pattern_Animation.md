@@ -11,62 +11,7 @@ notebook: GS_Pattern_Animation.ipynb
 
 
 
-
-
-
 ## Forward Euler Method
-
-
-
-```python
-Ny, Nx = 64, 64
-h = 2
-N = Nx * Ny
-
-Du = 1.0
-Dv = 0.5
-ff = 0.055
-kk = 0.062
-
-dt = 0.5
-end_t = 10000
-time_steps = int(end_t / dt)
-print('dt = {}, time_steps = {}'.format(dt, time_steps))
-c = dt / (h * h)
-
-U_init = np.zeros((Ny, Nx))
-V_init = np.zeros((Ny, Nx))
-U_init[:, :] = 1
-V_init[24:40, 24:40] = 1
-
-U = np.zeros((time_steps, Ny, Nx))
-V = np.zeros((time_steps, Ny, Nx))
-U[0] = np.copy(U_init)
-V[0] = np.copy(V_init)
-
-for i in range(1, time_steps):
-    U[i] = Du * c * my_laplacian(U[i - 1])
-    V[i] = Dv * c * my_laplacian(V[i - 1])
-
-    U[i] += -dt * np.multiply(U[i - 1], np.square(V[i - 1])) \
-        + dt * ff * (1 - U[i - 1]) + U[i - 1]
-    V[i] += dt * np.multiply(U[i - 1], np.square(V[i - 1])) \
-        - dt * (kk + ff) * V[i - 1] + V[i - 1]
-```
-
-
-    dt = 0.5, time_steps = 20000
-
-
-
-
-```python
-ani = animate_pattern(U, V, h, dt, Nsteps=time_steps, Nout=200)
-HTML(ani.to_html5_video())
-```
-
-
-
 
 
 <video width="1008" height="504" controls autoplay loop>
@@ -5002,72 +4947,10 @@ ACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1Ny44My4xMDA=
 </video>
 
 
-
-
 ![png](GS_Pattern_Animation_files/GS_Pattern_Animation_4_1.png)
 
 
 ## Backward Euler Method
-
-
-
-```python
-Ny, Nx = 64, 64
-h = 2
-N = Nx * Ny
-
-Du = 1.0
-Dv = 0.5
-ff = 0.055
-kk = 0.062
-
-dt = 1
-end_t = 10000
-time_steps = int(end_t / dt)
-print('dt = {}, time_steps = {}'.format(dt, time_steps))
-c = dt / (h * h)
-
-L = Laplace_matrix_sparse(Ny, Nx)
-Tu = sparse.eye(N) - Du * c * L
-Tv = sparse.eye(N) - Dv * c * L
-
-solve_Tu = linalg.factorized(Tu.tocsc())
-solve_Tv = linalg.factorized(Tv.tocsc())
-
-U_init = np.zeros((Ny, Nx))
-V_init = np.zeros((Ny, Nx))
-U_init[:, :] = 1
-V_init[24:40, 24:40] = 1
-
-U1d = np.zeros((time_steps, N))
-V1d = np.zeros((time_steps, N))
-U1d[0] = np.copy(U_init.flatten())
-V1d[0] = np.copy(V_init.flatten())
-
-for i in range(1, time_steps):
-    bU = np.multiply((1 - dt * np.square(V1d[i - 1]) - dt * ff), U1d[i - 1]) + dt * ff
-    U1d[i] = solve_Tu(bU)
-
-    bV = (1 - dt * kk - dt * ff) * V1d[i - 1] + dt * np.multiply(U1d[i - 1], np.square(V1d[i - 1]))
-    V1d[i] = solve_Tv(bV)
-
-U2d = U1d.reshape((time_steps, Ny, Nx))
-V2d = V1d.reshape((time_steps, Ny, Nx))
-```
-
-
-    dt = 1, time_steps = 10000
-
-
-
-
-```python
-ani = animate_pattern(U2d, V2d, h, dt, Nsteps=time_steps, Nout=50)
-HTML(ani.to_html5_video())
-```
-
-
-
 
 
 <video width="1008" height="504" controls autoplay loop>
@@ -12670,74 +12553,10 @@ ZjU3LjgzLjEwMA==
 </video>
 
 
-
-
 ![png](GS_Pattern_Animation_files/GS_Pattern_Animation_7_1.png)
 
 
 ## Crank Nicolson Method
-
-
-
-```python
-Ny, Nx = 64, 64
-h = 2
-N = Nx * Ny
-
-Du = 1.0
-Dv = 0.5
-ff = 0.055
-kk = 0.062
-
-dt = 1
-end_t = 10000
-time_steps = int(end_t / dt)
-print('dt = {}, time_steps = {}'.format(dt, time_steps))
-c = dt / (h * h)
-
-L = Laplace_matrix_sparse(Ny, Nx)
-Tu = sparse.eye(N) - 0.5 * Du * c * L
-Tv = sparse.eye(N) - 0.5 * Dv * c * L
-
-solve_Tu = linalg.factorized(Tu.tocsc())
-solve_Tv = linalg.factorized(Tv.tocsc())
-
-U_init = np.zeros((Ny, Nx))
-V_init = np.zeros((Ny, Nx))
-U_init[:, :] = 1
-V_init[24:40, 24:40] = 1
-
-U1d = np.zeros((time_steps, N))
-V1d = np.zeros((time_steps, N))
-U1d[0] = np.copy(U_init.flatten())
-V1d[0] = np.copy(V_init.flatten())
-
-for i in range(1, time_steps):
-    bU = (0.5 * Du * c) * L.dot(U1d[i - 1]) \
-        + np.multiply((1 - dt * np.square(V1d[i - 1]) - dt * ff), U1d[i - 1]) + dt * ff
-    U1d[i] = solve_Tu(bU)
-
-    bV = (0.5 * Dv * c) * L.dot(V1d[i - 1]) + (1 - dt * kk - dt * ff) * V1d[i - 1] \
-        + dt * np.multiply(U1d[i - 1], np.square(V1d[i - 1]))
-    V1d[i] = solve_Tv(bV)
-
-U2d = U1d.reshape((time_steps, Ny, Nx))
-V2d = V1d.reshape((time_steps, Ny, Nx))
-```
-
-
-    dt = 1, time_steps = 10000
-
-
-
-
-```python
-ani = animate_pattern(U2d, V2d, h, dt, Nsteps=time_steps, Nout=50)
-HTML(ani.to_html5_video())
-```
-
-
-
 
 
 <video width="1008" height="504" controls autoplay loop>
@@ -20595,86 +20414,10 @@ LWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTcuODMuMTAw
 </video>
 
 
-
-
 ![png](GS_Pattern_Animation_files/GS_Pattern_Animation_10_1.png)
 
 
 ## Alternating Direction Implicit Method
-
-
-
-```python
-Ny, Nx = 64, 64
-h = 2
-N = Nx * Ny
-
-Du = 1.0
-Dv = 0.5
-ff = 0.055
-kk = 0.062
-
-dt = 1.5
-end_t = 10000
-time_steps = int(end_t / dt)
-print('dt = {}, time_steps = {}'.format(dt, time_steps))
-c = dt / (h * h)
-
-D2x = sparse.diags([-2, 1, 1, 1, 1], [0, 1, -1, 1 - Nx, -1 + Nx], shape=(Nx, Nx))
-D2y = sparse.diags([-2, 1, 1, 1, 1], [0, 1, -1, 1 - Ny, -1 + Ny], shape=(Ny, Ny))
-Tu_x = sparse.eye(Nx) - 0.5 * Du * c * D2x
-Tu_y = sparse.eye(Ny) - 0.5 * Du * c * D2y
-Tv_x = sparse.eye(Nx) - 0.5 * Dv * c * D2x
-Tv_y = sparse.eye(Ny) - 0.5 * Dv * c * D2y
-
-solve_Tu_x = linalg.factorized(Tu_x.tocsc())
-solve_Tu_y = linalg.factorized(Tu_y.tocsc())
-solve_Tv_x = linalg.factorized(Tv_x.tocsc())
-solve_Tv_y = linalg.factorized(Tv_y.tocsc())
-
-U_init = np.zeros((Ny, Nx))
-V_init = np.zeros((Ny, Nx))
-U_init[:, :] = 1
-V_init[24:40, 24:40] = 1
-
-U = np.zeros((time_steps, Ny, Nx))
-V = np.zeros((time_steps, Ny, Nx))
-U[0] = np.copy(U_init)
-V[0] = np.copy(V_init)
-
-for i in range(1, time_steps):
-    # Stage one - solve along x direction
-    b1U = 0.5 * Du * c * D2y.dot(U[i - 1]) \
-        + (1 - 0.5 * dt * V[i - 1] ** 2 - 0.5 * dt * ff) * U[i - 1] + 0.5 * dt * ff
-    b1V = 0.5 * Dv * c * D2y.dot(V[i - 1]) \
-        + (1 - 0.5 * dt * kk - 0.5 * dt * ff) * V[i - 1] + 0.5 * dt * U[i - 1] * V[i - 1] ** 2
-
-    U_middle = solve_Tu_x(b1U.T)
-    V_middle = solve_Tv_x(b1V.T)
-
-    # Stage two - solve along y direction
-    b2U = 0.5 * Du * c * D2x.dot(U_middle) \
-        + (1 - 0.5 * dt * V_middle ** 2 - 0.5 * dt * ff) * U_middle + 0.5 * dt * ff
-    b2V = 0.5 * Dv * c * D2x.dot(V_middle) \
-        + (1 - 0.5 * dt * kk - 0.5 * dt * ff) * V_middle + 0.5 * dt * U_middle * V_middle ** 2
-
-    U[i] = solve_Tu_y(b2U.T)
-    V[i] = solve_Tv_y(b2V.T)
-```
-
-
-    dt = 1.5, time_steps = 6666
-
-
-
-
-```python
-ani = animate_pattern(U, V, h, dt, Nsteps=time_steps, Nout=50)
-HTML(ani.to_html5_video())
-```
-
-
-
 
 
 <video width="1008" height="504" controls autoplay loop>
@@ -28677,8 +28420,6 @@ AAAAAC1pbHN0AAAAJal0b28AAAAdZGF0YQAAAAEAAAAATGF2ZjU3LjgzLjEwMA==
 ">
   Your browser does not support the video tag.
 </video>
-
-
 
 
 ![png](GS_Pattern_Animation_files/GS_Pattern_Animation_13_1.png)
