@@ -1,5 +1,5 @@
 ---
-title: Two-Dimensional Pattern Formation with Reaction Diffusion Equations 
+title: 2D Pattern Formation with Reaction Diffusion Equations 
 ---
 
 ## Contents

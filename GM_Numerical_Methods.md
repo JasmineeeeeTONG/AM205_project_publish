@@ -1,6 +1,6 @@
 ---
 nav_include: 3
-title: GM Results
+title: Numeical Methods and Results (GM)
 notebook: GM_Numerical_Methods.ipynb
 ---
 

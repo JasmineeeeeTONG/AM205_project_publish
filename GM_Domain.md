@@ -1,6 +1,6 @@
 ---
 nav_include: 5
-title: GM Domain
+title: Domain (GM)
 notebook: GM_Domain.ipynb
 ---
 

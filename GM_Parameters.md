@@ -1,6 +1,6 @@
 ---
 nav_include: 9
-title: GM Params
+title: Parameters (GM)
 notebook: GM_Parameters.ipynb
 ---
 

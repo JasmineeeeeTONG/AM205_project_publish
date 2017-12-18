@@ -1,6 +1,6 @@
 ---
 nav_include: 2
-title: GS Pattern
+title: Pattern Animation (GS)
 notebook: GS_Pattern_Animation.ipynb
 ---
 

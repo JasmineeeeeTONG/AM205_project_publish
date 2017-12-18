@@ -1,6 +1,6 @@
 ---
 nav_include: 10
-title: GS Params
+title: Parameters (GS)
 notebook: GS_Parameters.ipynb
 ---
 

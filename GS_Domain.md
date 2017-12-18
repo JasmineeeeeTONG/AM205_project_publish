@@ -1,6 +1,6 @@
 ---
 nav_include: 6
-title: GS Domain
+title: Domain (GS)
 notebook: GS_Domain.ipynb
 ---
 

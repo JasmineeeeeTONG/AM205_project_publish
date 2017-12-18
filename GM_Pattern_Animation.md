@@ -1,6 +1,6 @@
 ---
 nav_include: 1
-title: GM Pattern
+title: Pattern Animation (GM)
 notebook: GM_Pattern_Animation.ipynb
 ---
 

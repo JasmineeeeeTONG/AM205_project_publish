@@ -1,6 +1,6 @@
 ---
 nav_include: 8
-title: GS Initial Conditions
+title: Initial Conditions (GS)
 notebook: GS_Initial_Conditions.ipynb
 ---
 

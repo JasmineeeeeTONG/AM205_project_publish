@@ -1,6 +1,6 @@
 ---
 nav_include: 7
-title: GM Initial Conditions
+title: Initial Conditions (GM)
 notebook: GM_Initial_Conditions.ipynb
 ---
 

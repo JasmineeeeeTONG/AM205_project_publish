@@ -1,6 +1,6 @@
 ---
 nav_include: 4
-title: GS Results
+title: Numeical Methods and Results (GS)
 notebook: GS_Numerical_Methods.ipynb
 ---
 
